@@ -22,6 +22,7 @@ import {
 } from "@ui-kitten/components";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import * as eva from "@eva-design/eva";
+import { default as theme } from "./src/theme/custom-theme.json";
 
 /**
  * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
@@ -32,7 +33,7 @@ const HeartIcon = props => <Icon {...props} name="heart" />;
 export default () => (
   <>
     <IconRegistry icons={EvaIconsPack} />
-    <ApplicationProvider {...eva} theme={eva.light}>
+    <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
       <Layout style={styles.container}>
         <Text style={styles.text} category="h1">
           Welcome to UI Kitten 😻
