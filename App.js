@@ -32,7 +32,11 @@ export default () => (
     <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
       <NavigationContainer>
         <Auth.Navigator>
-          <Auth.Screen name="SignIn" component={SignInScreen} />
+          <Auth.Screen
+            name="SignIn"
+            options={{ headerShown: false }}
+            component={SignInScreen}
+          />
         </Auth.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
