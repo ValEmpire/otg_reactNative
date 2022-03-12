@@ -45,16 +45,15 @@ export default ({ navigation }) => {
   );
 
   return (
-    <Layout level={"2"} style={styles.container}>
+    <Layout style={styles.container}>
       <KeyboardAvoidingView>
         <View style={styles.headerContainer}>
           <Avatar
             style={styles.logo}
             source={require("../../assets/images/logo.png")}
+            shape="square"
           />
-          <Text style={styles.signInLabel} category="c1">
-            OFW Tambayan Group
-          </Text>
+          <Text category="s1">OFW Tambayan Group</Text>
         </View>
         <View style={styles.formContainer}>
           <Input

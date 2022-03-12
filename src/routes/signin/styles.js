@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 80,
-    height: 80,
+    width: 160,
+    height: 120,
   },
 
   headerContainer: {
@@ -18,9 +18,6 @@ export const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     paddingHorizontal: 16,
-  },
-  signInLabel: {
-    marginTop: 16,
   },
   passwordInput: {
     marginTop: 16,
