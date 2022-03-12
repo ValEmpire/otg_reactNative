@@ -18,6 +18,7 @@ import { default as theme } from "./src/theme/custom-theme.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from "./src/screens/SignInScreen";
+import SignUpScreen from "./src/screens/SignUpScreen";
 
 /**
  * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
@@ -36,6 +37,11 @@ export default () => (
             name="SignIn"
             options={{ headerShown: false }}
             component={SignInScreen}
+          />
+          <Auth.Screen
+            name="SignUp"
+            options={{ headerShown: false }}
+            component={SignUpScreen}
           />
         </Auth.Navigator>
       </NavigationContainer>

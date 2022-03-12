@@ -11,32 +11,37 @@ export const styles = StyleSheet.create({
   },
 
   headerContainer: {
-    minHeight: 216,
     justifyContent: "center",
     alignItems: "center",
+    minHeight: 176,
+  },
+  editAvatarButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
   },
   formContainer: {
     flex: 1,
     paddingHorizontal: 16,
   },
-  passwordInput: {
+  formInput: {
     marginTop: 16,
   },
-  signInButton: {
-    marginHorizontal: 16,
+  termsCheckBox: {
+    marginTop: 24,
   },
-  forgotPasswordContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-  },
-  forgotPasswordButton: {
-    paddingHorizontal: 0,
+  termsCheckBoxText: {
+    marginLeft: 10,
   },
   signUpButton: {
-    marginVertical: 17,
+    marginHorizontal: 16,
+  },
+  signInButton: {
+    marginVertical: 12,
+    marginHorizontal: 16,
   },
   socialAuthContainer: {
-    marginTop: 32,
+    marginTop: 24,
   },
   socialAuthButtonsContainer: {
     flexDirection: "row",

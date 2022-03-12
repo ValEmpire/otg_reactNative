@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { View, TouchableWithoutFeedback } from "react-native";
 import {
   Button,
+  CheckBox,
   Input,
   Text,
   Icon,
@@ -11,27 +12,28 @@ import {
 import {
   FacebookIcon,
   GoogleIcon,
-  EmailIcon,
+  PersonIcon,
   TwitterIcon,
+  EmailIcon,
 } from "../../assets/icons";
+
 import { KeyboardAvoidingView } from "../../components/KeyboardAvoidingView";
+
 import { styles } from "./styles";
 
 export default ({ navigation }) => {
-  const [email, setEmail] = React.useState();
-  const [password, setPassword] = React.useState();
-  const [passwordVisible, setPasswordVisible] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const onSignInButtonPress = () => {
+  const onSignUpButtonPress = () => {
     navigation && navigation.goBack();
   };
 
-  const onSignUpButtonPress = () => {
-    navigation && navigation.navigate("SignUp");
-  };
-
-  const onForgotPasswordButtonPress = () => {
-    navigation && navigation.navigate("ForgotPassword");
+  const onSignInButtonPress = () => {
+    navigation && navigation.navigate("SignIn");
   };
 
   const onPasswordIconPress = () => {
@@ -42,6 +44,15 @@ export default ({ navigation }) => {
     <TouchableWithoutFeedback onPress={onPasswordIconPress}>
       <Icon {...props} name={passwordVisible ? "eye-off" : "eye"} />
     </TouchableWithoutFeedback>
+  );
+
+  const renderCheckboxLabel = useCallback(
+    evaProps => (
+      <Text {...evaProps} style={styles.termsCheckBoxText}>
+        I read and agree to Terms & Conditions
+      </Text>
+    ),
+    [],
   );
 
   return (
@@ -57,14 +68,25 @@ export default ({ navigation }) => {
         </View>
         <View style={styles.formContainer}>
           <Input
-            placeholder="Email"
-            accessoryRight={EmailIcon}
+            style={styles.formInput}
+            autoCapitalize="none"
+            placeholder="Username"
             size="large"
+            accessoryRight={PersonIcon}
+            value={username}
+            onChangeText={setUsername}
+          />
+          <Input
+            style={styles.formInput}
+            autoCapitalize="none"
+            placeholder="Email"
+            size="large"
+            accessoryRight={EmailIcon}
             value={email}
             onChangeText={setEmail}
           />
           <Input
-            style={styles.passwordInput}
+            style={styles.formInput}
             autoCapitalize="none"
             secureTextEntry={!passwordVisible}
             placeholder="Password"
@@ -73,20 +95,18 @@ export default ({ navigation }) => {
             value={password}
             onChangeText={setPassword}
           />
-          <View style={styles.forgotPasswordContainer}>
-            <Button
-              style={styles.forgotPasswordButton}
-              appearance="ghost"
-              onPress={onForgotPasswordButtonPress}>
-              Forgot your password?
-            </Button>
-          </View>
+          <CheckBox
+            style={styles.termsCheckBox}
+            checked={termsAccepted}
+            onChange={checked => setTermsAccepted(checked)}>
+            {renderCheckboxLabel}
+          </CheckBox>
         </View>
         <Button
-          style={styles.signInButton}
+          style={styles.signUpButton}
           size="medium"
-          onPress={onSignInButtonPress}>
-          SIGN IN
+          onPress={onSignUpButtonPress}>
+          SIGN UP
         </Button>
         <View style={styles.socialAuthContainer}>
           <Text style={styles.socialAuthHintText}>Or Continue With</Text>
@@ -109,10 +129,10 @@ export default ({ navigation }) => {
           </View>
         </View>
         <Button
-          style={styles.signUpButton}
+          style={styles.signInButton}
           appearance="ghost"
-          onPress={onSignUpButtonPress}>
-          Don't have an account? Sign Up
+          onPress={onSignInButtonPress}>
+          Already have account? Sign In
         </Button>
       </KeyboardAvoidingView>
     </Layout>

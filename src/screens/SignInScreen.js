@@ -1,8 +1,8 @@
 import React from "react";
 import SignInRoute from "../routes/signin";
 
-const Signinscreen = props => {
+const SignInScreen = props => {
   return <SignInRoute {...props} />;
 };
 
-export default Signinscreen;
+export default SignInScreen;

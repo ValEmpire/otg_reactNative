@@ -14,3 +14,5 @@ export const PersonIcon = style => <Icon {...style} name="person" />;
 export const TwitterIcon = style => (
   <Icon {...style} fill={"#55ACEE"} name="twitter" />
 );
+
+export const EmailIcon = style => <Icon {...style} name="email" />;
