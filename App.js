@@ -16,33 +16,26 @@ import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import * as eva from "@eva-design/eva";
 import { default as theme } from "./src/theme/custom-theme.json";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
+import "react-native-gesture-handler";
 
 /**
  * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
  * https://akveo.github.io/eva-icons
  */
 
-const Auth = createNativeStackNavigator();
+const Auth = createStackNavigator();
 
 export default () => (
   <>
     <IconRegistry icons={EvaIconsPack} />
     <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
       <NavigationContainer>
-        <Auth.Navigator>
-          <Auth.Screen
-            name="SignIn"
-            options={{ headerShown: false }}
-            component={SignInScreen}
-          />
-          <Auth.Screen
-            name="SignUp"
-            options={{ headerShown: false }}
-            component={SignUpScreen}
-          />
+        <Auth.Navigator headerMode="none">
+          <Auth.Screen name="SignIn" component={SignInScreen} />
+          <Auth.Screen name="SignUp" component={SignUpScreen} />
         </Auth.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
