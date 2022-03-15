@@ -17,9 +17,12 @@ import * as eva from "@eva-design/eva";
 import { default as theme } from "./src/theme/custom-theme.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
+
 import SignInScreen from "./src/screens/SignInScreen";
 import SignUpScreen from "./src/screens/SignUpScreen";
-import "react-native-gesture-handler";
+
+import HomeScreen from "./src/screens/HomeScreen";
 
 /**
  * Use any valid `name` property from eva icons (e.g `github`, or `heart-outline`)
@@ -27,6 +30,8 @@ import "react-native-gesture-handler";
  */
 
 const Auth = createStackNavigator();
+
+const App = createStackNavigator();
 
 export default () => (
   <>
@@ -37,6 +42,10 @@ export default () => (
           <Auth.Screen name="SignIn" component={SignInScreen} />
           <Auth.Screen name="SignUp" component={SignUpScreen} />
         </Auth.Navigator>
+
+        <App.Navigator headerMode="none">
+          <App.Screen name="Feed" component={HomeScreen} />
+        </App.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
   </>
